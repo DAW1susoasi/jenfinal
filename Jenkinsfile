@@ -9,7 +9,7 @@ pipeline {
 
     stage('segun') {
       steps {
-        sh 'echo "Job 06 OK" > job.06.txt'
+        sh 'cp ./users-240122.xlsx /python; ls -l /python'
       }
     }
 
