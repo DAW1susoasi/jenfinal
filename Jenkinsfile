@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('primer') {
       steps {
-        sh 'ls /python'
+        sh 'ls -l /python'
       }
     }
 
