@@ -9,7 +9,7 @@ pipeline {
 
     stage('segun') {
       steps {
-        sh 'cp ./users-240122.xlsx /python'
+        sh 'cp ./users-240123.xlsx /python/'
       }
     }
 
