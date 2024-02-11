@@ -3,13 +3,14 @@ pipeline {
   stages {
     stage('primer') {
       steps {
-        sh 'ls -l /python'
+        sh 'echo "Descargando users-240123.xlsx de repositorio"'
       }
     }
 
     stage('segun') {
       steps {
-        sh 'cp ./users-240123.xlsx /python/'
+        sh '''echo "Ejecutando script python";
+        ~/python-diff.py ~/users-240122.xlsx ./users-240123.xlsx;'''
       }
     }
 
