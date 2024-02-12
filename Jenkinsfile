@@ -19,6 +19,12 @@ pipeline {
         scp -p meta-script.sh marchante.ddns.net:/home/ubuntu/;'''
       }
     }
+	stage('Ejecutar script bash en el servidor') {
+      steps {
+        sh '''echo "Ejecutando script en el servidor";
+			ssh ubuntu@marchante.ddns.net 'bash -s' < meta-script.sh;'''
+      }
+    }
   }
   post {
     success {
