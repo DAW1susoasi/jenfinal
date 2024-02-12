@@ -22,7 +22,7 @@ pipeline {
 	stage('Ejecutar script bash en el servidor') {
       steps {
         sh '''echo "Ejecutando script en el servidor";
-			ssh ubuntu@marchante.ddns.net 'bash -s' < meta-script.sh;'''
+			ssh ubuntu@marchante.ddns.net 'sudo bash -s' < meta-script.sh;'''
       }
     }
   }
