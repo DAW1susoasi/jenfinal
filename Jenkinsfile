@@ -12,17 +12,17 @@ pipeline {
         ~/python-diff.py ./old.xlsx ./new.xlsx;'''
       }
     }
-	stage('Copiar script bash en el servidor') {
+	stage('Hacer ejecutable script bash') {
       steps {
-        sh '''echo "Copiando script en el servidor";
+        sh '''echo "Haciendo ejecutable script bash";
 		chmod +x meta-script.sh;
-        scp -p meta-script.sh marchante.ddns.net:/home/ubuntu/;'''
+        // scp -p meta-script.sh marchante.ddns.net:/home/ubuntu/;'''
       }
     }
 	stage('Ejecutar script bash en el servidor') {
       steps {
         sh '''echo "Ejecutando script en el servidor";
-			ssh ubuntu@marchante.ddns.net 'sudo bash -s' < meta-script.sh;'''
+		ssh ubuntu@marchante.ddns.net 'sudo bash -s' < meta-script.sh;'''
       }
     }
   }
