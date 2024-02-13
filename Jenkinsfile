@@ -28,7 +28,7 @@ pipeline {
 	stage('Crear informe en pdf') {
       steps {
         sh '''echo "Creando informe en pdf";
-		pandoc plantilla.md -o informe.pdf;'''
+		pandoc plantilla.md -o "informe_$(date +"%Y-%m-%d").pdf";'''
       }
     }
   }
