@@ -28,9 +28,20 @@ pipeline {
 	stage('Crear informe en pdf') {
       steps {
         sh '''echo "Creando informe en pdf";
-		pandoc plantilla.md -o "informe_$(date +"%Y-%m-%d").pdf";'''
+		pandoc plantilla.md -o informe.pdf;'''
       }
     }
+	stage('Enviar correo con adjunto') {
+	  steps {
+		script {
+		  def cuerpoCorreo = "Cuerpo del correo"
+		  def destinatario = "ubuntu@marchantemeco.duckdns.com"
+		  def archivoAdjunto = "informe.pdf"	
+		  def comandoSendmail = "echo \"Subject: Asunto del correo\n\n${cuerpoCorreo}\" | sendmail ${destinatario} -A ${archivoAdjunto}"
+		  sh comandoSendmail
+		}
+	  }
+	}
 	stage('Hacer push a GitHub') {
       steps {
         sh '''git add .
