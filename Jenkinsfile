@@ -35,7 +35,7 @@ pipeline {
       steps {
         sh '''git add .
 			  git commit -m "Subiendo informe"
-			  git push origin main
+			  git push
 		'''
       }
     }
