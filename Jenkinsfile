@@ -31,6 +31,13 @@ pipeline {
 		pandoc plantilla.md -o "informe_$(date +"%Y-%m-%d").pdf";'''
       }
     }
+	stage('Hacer push a GitHub') {
+      steps {
+        sh 'git add .'
+        sh 'git commit -m "Subiendo informe"'
+        sh 'git push origin main'
+      }
+    }
   }
   post {
     success {
