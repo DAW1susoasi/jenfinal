@@ -36,7 +36,7 @@ pipeline {
 		script {
 		  def cuerpoCorreo = "Tarea OK"
 		  def destinatario = "papi@marchantemeco.duckdns.org"
-		  def archivoAdjunto = "informe.pdf"	
+		  def archivoAdjunto = "/home/ubuntu/jenkins_jobs/workspace/06/informe.pdf"	
 		  def comandoSendmail = "echo \"Subject: Envío de informe tarea\n\n${cuerpoCorreo}\" | sendmail ${destinatario} -A ${archivoAdjunto}"
 		  sh comandoSendmail
 		}
