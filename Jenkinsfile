@@ -22,7 +22,13 @@ pipeline {
 	stage('Ejecutar script bash en el servidor') {
       steps {
         sh '''echo "Ejecutando script en el servidor";
-		ssh ubuntu@marchante.ddns.net 'sudo bash -s' < meta-script.sh;'''
+		// ssh ubuntu@marchante.ddns.net 'sudo bash -s' < meta-script.sh;'''
+      }
+    }
+	stage('Crear informe en pdf') {
+      steps {
+        sh '''echo "Creando informe en pdf";
+		pandoc plantilla.md -o plantilla.pdf;'''
       }
     }
   }
