@@ -34,10 +34,10 @@ pipeline {
 	stage('Enviar correo con adjunto') {
 	  steps {
 		script {
-		  def cuerpoCorreo = "Tarea ON"
+		  def cuerpoCorreo = "Tarea OK"
 		  def destinatario = "papi@marchantemeco.duckdns.org"
 		  def archivoAdjunto = "informe.pdf"	
-		  def comandoSendmail = "echo \"Subject: Asunto del correo\n\n${cuerpoCorreo}\" | sendmail ${destinatario} -A ${archivoAdjunto}"
+		  def comandoSendmail = "echo \"Subject: Envío de informe tarea\n\n${cuerpoCorreo}\" | sendmail ${destinatario} -A ${archivoAdjunto}"
 		  sh comandoSendmail
 		}
 	  }
