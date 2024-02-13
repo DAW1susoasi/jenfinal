@@ -17,7 +17,6 @@ pipeline {
         sh '''echo "Haciendo ejecutable script bash";
 		chmod +x meta-script.sh;
 		// No hace falta copiar el script en el servidor, se ejecuta directamente en el  paso siguiente
-        // scp -p meta-script.sh marchante.ddns.net:/home/ubuntu/;
 		'''
       }
     }
