@@ -34,8 +34,8 @@ pipeline {
 	stage('Enviar correo con adjunto') {
 	  steps {
 		script {
-		  def cuerpoCorreo = "Cuerpo del correo"
-		  def destinatario = "ubuntu@marchantemeco.duckdns.com"
+		  def cuerpoCorreo = "Tarea ON"
+		  def destinatario = "papi@marchantemeco.duckdns.org"
 		  def archivoAdjunto = "informe.pdf"	
 		  def comandoSendmail = "echo \"Subject: Asunto del correo\n\n${cuerpoCorreo}\" | sendmail ${destinatario} -A ${archivoAdjunto}"
 		  sh comandoSendmail
