@@ -33,9 +33,10 @@ pipeline {
     }
 	stage('Hacer push a GitHub') {
       steps {
-        sh 'git add .'
-        sh 'git commit -m "Subiendo informe"'
-        sh 'git push origin main'
+        sh '''git add .
+			  git commit -m "Subiendo informe"
+			  git push origin main
+		'''
       }
     }
   }
