@@ -38,7 +38,7 @@ pipeline {
 		  def destinatario = "papi@marchantemeco.duckdns.org"
 		  def archivoAdjunto = "/home/ubuntu/jenkins_jobs/workspace/06/informe.pdf"
 		  def asuntoCorreo = "Envío de informe tarea"
-		  sh "echo \"${cuerpoCorreo}\" | mail -s \"${asuntoCorreo}\" -a ${archivoAdjunto} ${destinatario}"
+		  sh "echo \"${cuerpoCorreo}\" | mutt -s \"${asuntoCorreo}\" -a ${archivoAdjunto} -- ${destinatario}"
 		}
 	  }
 	}
