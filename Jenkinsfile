@@ -36,7 +36,7 @@ pipeline {
 		script {
 		  def emailSubject = 'Envío informe tarea'
 		  def emailBody = 'Tarea OK". Adjunto el informe.'
-		  def recipients = 'marchantemeco.duckdns.org'
+		  def recipients = 'papi@marchantemeco.duckdns.org'
 		  def attachmentPath = '/home/ubuntu/jenkins_jobs/workspace/06/informe.pdf'
 		  emailext (
 			subject: emailSubject,
