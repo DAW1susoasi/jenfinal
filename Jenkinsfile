@@ -14,21 +14,17 @@ pipeline {
     }
 	stage('Hacer ejecutable script bash') {
       steps {
-        sh '''echo "Haciendo ejecutable script bash";
-		chmod +x meta-script.sh;
-		'''
+        sh 'chmod +x meta-script.sh'
       }
     }
 	stage('Ejecutar script bash en el servidor') {
       steps {
-        sh '''echo "Ejecutando script en el servidor";
-		'''
+        sh 'echo "Ejecutando script en el servidor"'
       }
     }
 	stage('Crear informe en pdf') {
       steps {
-        sh '''echo "Creando informe en pdf";
-		pandoc plantilla.md -o informe.pdf;'''
+        sh 'pandoc plantilla.md -o informe.pdf'
       }
     }
 	stage('Enviar correo con adjunto') {
