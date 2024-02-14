@@ -34,18 +34,11 @@ pipeline {
 	stage('Enviar correo con adjunto') {
 	  steps {
 		script {
-		  def emailSubject = 'Envío informe tarea'
-		  def emailBody = 'Tarea OK". Adjunto el informe.'
-		  def recipients = 'papi@marchantemeco.duckdns.org'
-		  def attachmentPath = '/home/ubuntu/jenkins_jobs/workspace/06/informe.pdf'
-		  emailext (
-			subject: emailSubject,
-			body: emailBody,
-			recipientProviders: [[$class: 'CulpritsRecipientProvider']],
-			attachLog: false, // No adjuntar el registro del pipeline
-			attachmentsPattern: attachmentPath,
-			to: recipients
-		  )
+		  def cuerpoCorreo = "Tarea OK"
+		  def destinatario = "papi@marchantemeco.duckdns.org"
+		  def archivoAdjunto = "/home/ubuntu/jenkins_jobs/workspace/06/informe.pdf"
+		  def asuntoCorreo = "Envío de informe tarea"
+		  sh "echo \"${cuerpoCorreo}\" | mail -s \"${asuntoCorreo}\" -a ${archivoAdjunto} ${destinatario}"
 		}
 	  }
 	}
