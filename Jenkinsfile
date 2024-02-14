@@ -44,10 +44,10 @@ pipeline {
 	}
 	stage('Hacer push a GitHub') {
       steps {
-        sh '''git add .
-			  git commit -m "Subiendo informe"
-			  git push origin HEAD:main
-		'''
+        git branch: 'main', url: 'https://github.com/DAW1susoasi/jenfinal.git'
+        sh 'git add informe.pdf'
+        sh 'git commit -m "Añadir informe.pdf"'
+        sh 'git push origin main'
       }
     }
   }
