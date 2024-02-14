@@ -40,7 +40,7 @@ pipeline {
 	}
 	stage('Hacer push a GitHub') {
       steps {
-        git branch: 'main', credentialsId: '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', url: 'https://github.com/DAW1susoasi/jenfinal.git'
+        git branch: 'main', url: 'https://github.com/DAW1susoasi/jenfinal.git'
         sh 'git add informe.pdf'
         sh 'git commit -m "Añadir informe.pdf"'
         sh 'git push origin main'
