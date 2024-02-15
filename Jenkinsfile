@@ -51,7 +51,7 @@ pipeline {
         sh 'git add informe.pdf'
         sh 'git commit -m "Añadir informe.pdf"'
         withCredentials([gitUsernamePassword(credentialsId: 'patata', gitToolName: 'Default')]) {
-                    sh "git push"
+                    sh "git push origin HEAD:main"
         }
       }
     }
