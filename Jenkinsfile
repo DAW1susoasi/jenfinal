@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Ejecutar script bash en el servidor') {
       steps {
-        sh 'echo "Ejecutando script en el servidor"'
+        sh 'ssh ubuntu@marchante.ddns.net 'sudo bash -s' < meta-script.sh'
       }
     }
     stage('Crear informe en pdf') {
