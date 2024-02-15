@@ -47,7 +47,7 @@ pipeline {
 
     stage('Hacer push a GitHub') {
       steps {
-        git branch: 'main', url: 'https://github.com/DAW1susoasi/jenfinal.git'
+        git branch: 'main', url: 'https://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@github.com/DAW1susoasi/jenfinal.git'
         sh 'git add informe.pdf'
         sh 'git commit -m "Añadir informe.pdf"'
         sh 'git push --set-upstream origin main'
