@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Ejecutar script bash en el servidor') {
       steps {
-        sh 'ssh ubuntu@marchante.ddns.net "sudo bash -s" < meta-script.sh'
+
       }
     }
     stage('Crear informe en pdf') {
@@ -29,21 +29,13 @@ pipeline {
     stage('Enviar correo con adjunto') {
       steps {
         script {
-          def cuerpoCorreo = "Tarea OK"
-          def destinatario = "papi@marchantemeco.duckdns.org"
-          def archivoAdjunto = "/home/ubuntu/jenkins_jobs/workspace/06/informe.pdf"
-          def asuntoCorreo = "Envío de informe tarea"
-          sh "echo \"${cuerpoCorreo}\" | mutt -s \"${asuntoCorreo}\" -a ${archivoAdjunto} -- ${destinatario}"
+
         }
       }
     }
     stage('Hacer push a GitHub') {
       steps {
-        sh 'git pull origin main'
-        sh 'git add informe.pdf'
-        sh 'git commit -m "Añadir informe.pdf"'
-        withCredentials([gitUsernamePassword(credentialsId: 'patata', gitToolName: 'Default')]) {
-          sh "git push origin HEAD:main"
+
         }
       }
     }
