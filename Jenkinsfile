@@ -50,6 +50,7 @@ pipeline {
         sh 'git add informe.pdf'
         sh 'git commit -m "Añadir informe.pdf"'
         sh 'git push --set-upstream origin main'
+        sh 'echo "bien"'
       }
     }
 
