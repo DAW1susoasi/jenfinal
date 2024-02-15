@@ -9,8 +9,7 @@ pipeline {
 
     stage('Ejecutar scritp python') {
       steps {
-        sh '''echo "Ejecutando script python";
-        ~/python-diff.py ./old.xlsx ./new.xlsx;'''
+        sh '~/python-diff.py ./old.xlsx ./new.xlsx'
       }
     }
 
