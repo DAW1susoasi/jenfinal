@@ -6,40 +6,45 @@ pipeline {
         sh 'echo "Descargando de repositorio"'
       }
     }
-
     stage('Ejecutar scritp python') {
       steps {
         sh '~/python-diff.py ./old.xlsx ./new.xlsx'
       }
     }
-
     stage('Hacer ejecutable script bash') {
       steps {
         sh 'chmod +x meta-script.sh'
       }
     }
-
     stage('Ejecutar script bash en el servidor') {
       steps {
         sh 'echo "Ejecutando script en el servidor"'
       }
     }
-
     stage('Crear informe en pdf') {
       steps {
         sh 'pandoc plantilla.md -o informe.pdf'
       }
     }
-
     stage('Enviar correo con adjunto') {
       steps {
-        sh 'echo "Enviando correo"'
+        script {
+          def cuerpoCorreo = "Tarea OK"
+          def destinatario = "papi@marchantemeco.duckdns.org"
+          def archivoAdjunto = "/home/ubuntu/jenkins_jobs/workspace/06/informe.pdf"
+          def asuntoCorreo = "Envío de informe tarea"
+          sh "echo \"${cuerpoCorreo}\" | mutt -s \"${asuntoCorreo}\" -a ${archivoAdjunto} -- ${destinatario}"
+        }
       }
     }
-
     stage('Hacer push a GitHub') {
       steps {
-        sh 'echo "Ejecutando script en el servidor"'
+        sh 'git pull origin main'
+        sh 'git add informe.pdf'
+        sh 'git commit -m "Añadir informe.pdf"'
+        withCredentials([gitUsernamePassword(credentialsId: 'patata', gitToolName: 'Default')]) {
+          sh "git push origin HEAD:main"
+        }
       }
     }
   }
