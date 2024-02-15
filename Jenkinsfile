@@ -47,7 +47,7 @@ pipeline {
 
     stage('Hacer push a GitHub') {
       steps {
-        sh 'git pull'
+        sh 'git fetch origin'
         sh 'git add informe.pdf'
         sh 'git commit -m "Añadir informe.pdf"'
         withCredentials([gitUsernamePassword(credentialsId: 'patata', gitToolName: 'Default')]) {
