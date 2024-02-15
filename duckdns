@@ -1,0 +1,13 @@
+docker run -d \
+  --name=duckdns \
+  --net=host `#optional` \
+  -e PUID=1000 `#optional` \
+  -e PGID=1000 `#optional` \
+  -e TZ=Europe/Madrid `#optional` \
+  -e SUBDOMAINS=marchantemeco.duckdns.org \
+  -e TOKEN=55dee524-bfd1-4742-806e-ba1b2e76bea2 \
+  -e UPDATE_IP=ipv4 `#optional` \
+  -e LOG_FILE=false `#optional` \
+  -v /path/to/duckdns/config:/config `#optional` \
+  --restart unless-stopped \
+  lscr.io/linuxserver/duckdns:latest
