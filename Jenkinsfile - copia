@@ -18,12 +18,8 @@ pipeline {
     }
     stage('Ejecutar script bash en el servidor') {
       steps {
-<<<<<<< HEAD
 	    sh 'chmod +x meta-script.sh'
         // sh 'ssh ubuntu@marchante.ddns.net "sudo bash -s" < meta-script.sh'
-=======
-
->>>>>>> 66a1894fd27c321abe9c4751dd4178aca59973ba
       }
     }
     stage('Enviar Telegram bash OK') {
@@ -33,18 +29,16 @@ pipeline {
     }
 	  stage('Crear informe en pdf') {
       steps {
-<<<<<<< HEAD
         sh 'pandoc plantilla.md -o informe.pdf'
-=======
-        script {
-
-        }
->>>>>>> 66a1894fd27c321abe9c4751dd4178aca59973ba
       }
     }
     stage('Hacer push a GitHub') {
       steps {
-
+        sh 'git pull origin main'
+        sh 'git add informe.pdf'
+        sh 'git commit -m "Añadir informe.pdf"'
+        withCredentials([gitUsernamePassword(credentialsId: 'patata', gitToolName: 'Default')]) {
+          sh "git push origin HEAD:main"
         }
       }
     }
