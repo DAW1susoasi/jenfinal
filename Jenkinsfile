@@ -48,15 +48,21 @@ pipeline {
   post {
     success {
       script {
-	    def cuerpoCorreo = "Tarea OK"
+	    def cuerpoCorreo = "La tarea se ha ejecuta correctamente. Adjunto informe."
 	    def destinatario = "papi@marchantemeco.duckdns.org"
 	    def archivoAdjunto = "/home/ubuntu/jenkins_jobs/workspace/06/informe.pdf"
-	    def asuntoCorreo = "Envío de informe tarea"
+	    def asuntoCorreo = "Envío de informe tarea OK"
 	    sh "echo \"${cuerpoCorreo}\" | mutt -s \"${asuntoCorreo}\" -a ${archivoAdjunto} -- ${destinatario}"
 	  }
     }
     failure {
-	  sh 'wget ${BUILD_URL}/consoleText'
+        script {
+            def cuerpoCorreo = "La tarea ha fallado. Adjunto los logs."
+            def destinatario = "papi@marchantemeco.duckdns.org"
+            def archivoLogs = "${env.BUILD_LOG}"
+            def asuntoCorreo = "Envío logs de la tarea fallida"
+            sh "echo \"${cuerpoCorreo}\" | mutt -s \"${asuntoCorreo}\" -a ${archivoLogs} -- ${destinatario}"
+        }
     }
   }
 }
