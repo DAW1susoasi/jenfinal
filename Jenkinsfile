@@ -13,20 +13,18 @@ pipeline {
     }
     stage('Enviar Telegram python OK') {
       steps {
-	    sh 'echo "Enviando telegram"'
-        // sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "6644496010", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'  https://api.telegram.org/bot6910914256:AAGPbsMpEj2dEexG8GqgQf_peUSZNBN_O8g/sendMessage'
+        sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "6644496010", "text": "Python OK!!!", "disable_notification": false}\'  https://api.telegram.org/bot6910914256:AAGPbsMpEj2dEexG8GqgQf_peUSZNBN_O8g/sendMessage'
       }
     }
     stage('Ejecutar script bash en el servidor') {
       steps {
-	    sh 'patata'
 	    sh 'chmod +x meta-script.sh'
         // sh 'ssh ubuntu@marchante.ddns.net "sudo bash -s" < meta-script.sh'
       }
     }
     stage('Enviar Telegram bash OK') {
       steps {
-         sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "6644496010", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'  https://api.telegram.org/bot6910914256:AAGPbsMpEj2dEexG8GqgQf_peUSZNBN_O8g/sendMessage'
+         sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "6644496010", "text": "Bash OK!!!", "disable_notification": false}\'  https://api.telegram.org/bot6910914256:AAGPbsMpEj2dEexG8GqgQf_peUSZNBN_O8g/sendMessage'
       }
     }
 	  stage('Crear informe en pdf') {
@@ -57,9 +55,8 @@ pipeline {
     }
     failure {
         script {
-	      def cuerpoCorreo = "Tarea falló"
+	      def cuerpoCorreo = "Tarea falló pero no conseguí obtener los logs"
 	      def destinatario = "papi@marchantemeco.duckdns.org"
-		  // No conseguí sacar los logs
 	      def asuntoCorreo = "Envío de logs tarea"
 	      sh "echo \"${cuerpoCorreo}\" | mutt -s \"${asuntoCorreo}\" -- ${destinatario}"
 	  }
