@@ -14,7 +14,7 @@ pipeline {
     stage('Enviar Telegram python OK') {
       steps {
 	    sh 'echo "Enviando telegram"'
-        // sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "6644496010", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'https://api.telegram.org/bot6910914256:AAGPbsMpEj2dEexG8GqgQf_peUSZNBN_O8g/sendMessage'
+        // sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "6644496010", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'  https://api.telegram.org/bot6910914256:AAGPbsMpEj2dEexG8GqgQf_peUSZNBN_O8g/sendMessage'
       }
     }
     stage('Ejecutar script bash en el servidor') {
@@ -25,7 +25,7 @@ pipeline {
     }
     stage('Enviar Telegram bash OK') {
       steps {
-         sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "6644496010", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'https://api.telegram.org/bot6910914256:AAGPbsMpEj2dEexG8GqgQf_peUSZNBN_O8g/sendMessage'
+         sh 'curl -X POST -H \'Content-Type: application/json\' -d \'{"chat_id": "6644496010", "text": "YEEEEEEAAA!!!", "disable_notification": false}\'  https://api.telegram.org/bot6910914256:AAGPbsMpEj2dEexG8GqgQf_peUSZNBN_O8g/sendMessage'
       }
     }
 	  stage('Crear informe en pdf') {
